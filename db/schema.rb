@@ -24,11 +24,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_23_180016) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cars_users", id: false, force: :cascade do |t|
-    t.bigint "car_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["car_id"], name: "index_cars_users_on_car_id"
-    t.index ["user_id"], name: "index_cars_users_on_user_id"
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "car_id"
+    t.index ["car_id"], name: "index_favorites_on_car_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
