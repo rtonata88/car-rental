@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-    has_and_belongs_to_many :cars
+    has_many :favorites
+    has_many :cars, through: :favorites
 end
