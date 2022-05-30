@@ -1,25 +1,29 @@
 class FavoritesController < ApplicationController
-  # GET /favorites
+  before_action :authorize_request
+  
+  # GET  /users/:user_id/favorites
   def index
-    @favorites = Favorite.all 
+    @user = User.find(params[:user_id])
+    @favorites = Favorite.includes(:user).where(user_id: @user.id) 
     render json: @favorites
   end
 
   # GET /favorites/1.json
-  def show
-    @favorite = Favorite.find(params[:id])
-    render json: @favorite
-  end
+  # def show
+  #   @favorite = Favorite.find(params[:id])
+  #   render json: @favorite
+  # end
 
   # GET /favorites/new
-  def new
-  end
+  # def new
+  # end
 
   # GET /favorites/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
-  # POST /favorites or /favorites.json
+  # POST /users/:user_id/favorites or /favorites.json
+  #{ body: :car_id }
   def create
     @favorite = Favorite.create(
       user_id: params[:user_id],
@@ -29,19 +33,19 @@ class FavoritesController < ApplicationController
   end
 
   # PATCH/PUT /favorites/1 or /favorites/1.json
-  def update
-    @favorite = Favorite.find(params[:id])
-    @favorite.update(
-      user_id: params[:user_id],
-      car_id: params[:car_id]
-    )
-    render json: @favorite
-  end
+  # def update
+  #   @favorite = Favorite.find(params[:id])
+  #   @favorite.update(
+  #     user_id: params[:user_id],
+  #     car_id: params[:car_id]
+  #   )
+  #   render json: @favorite
+  # end
 
-  def update_favorite
-  end
+  # def update_favorite
+  # end
 
-  # DELETE /favorites/1 or /favorites/1.json
+  # DELETE /users/:user_id/favorites/1 or /favorites/1.json
   def destroy
     @favorites = Favorite.all
     @favorite = Favorite.find(params[:id])
@@ -52,10 +56,10 @@ class FavoritesController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_favorite
-  end
+  # def set_favorite
+  # end
 
   # Only allow a list of trusted parameters through.
-  def favorite_params
-  end
+  # def favorite_params
+  # end
 end
