@@ -1,4 +1,7 @@
 class User < ApplicationRecord
-    has_many :favorites
-    has_many :cars, through: :favorites
+    has_secure_password
+    has_many :favorites, dependent: :destroy
+
+    validates :username, uniqueness: true
+    validates :username, presence: true
 end
