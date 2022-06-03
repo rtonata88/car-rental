@@ -6,8 +6,14 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-car1 = Car.create(name: "Mustang", make: "Ford", image: "https://cochesmiticos.com//wp-content/uploads/2021/07/22420992-1965-ford-mustang-std.jpg", model: "1965", description: "Very cool!")
-car2 = Car.create(name: "Camaro", make: "Chevy", image: "https://www.motoryracing.com/images/noticias/24000/24800/2.jpg", model: "1968", description: "Very nice!")
+car1 = Car.create(name: "Vogue", make: "Range Rover", image: "https://d2cnxbg536lf2p.cloudfront.net/test/file_5d14dc974de986_60230467.jpeg", model: "2022", description: "The vehicle will be delivered and collected at no addtional cost. You can specify the exact location - hotel, address or the airport in the next step.")
+car2 = Car.create(name: "Benz", make: "Mercedes", image: "https://d2cnxbg536lf2p.cloudfront.net/test/mercedes-benz-s-class_2015_lurento_5dde8498069300_74052328.jpg", model: "2020", description: "The vehicle will be delivered and collected at no addtional cost. You can specify the exact location - hotel, address or the airport in the next step.")
+car3 = Car.create(name: "Porshe", make: "Carrera", image: "https://d2cnxbg536lf2p.cloudfront.net/test/file_5be75facde77c5_10045608.jpg", model: "2021", description: "The vehicle will be delivered and collected at no addtional cost. You can specify the exact location - hotel, address or the airport in the next step.")
+car4 = Car.create(name: "Audi", make: "A8", image: "https://d2cnxbg536lf2p.cloudfront.net/test/audi-a8_2016_lurento_5ddbe3a3683ad9_84355158.jpg", model: "2022", description: "The vehicle will be delivered and collected at no addtional cost. You can specify the exact location - hotel, address or the airport in the next step.")
+car5 = Car.create(name: "Maserati", make: "Levante", image: "https://d2cnxbg536lf2p.cloudfront.net/test/maserati-levante-s-3-0-v6_2019_lurento_5dc96f6de95926_15148197.jpeg", model: "2019", description: "The vehicle will be delivered and collected at no addtional cost. You can specify the exact location - hotel, address or the airport in the next step.")
+car6 = Car.create(name: "BMW 7", make: "Series 740", image: "https://d2cnxbg536lf2p.cloudfront.net/test/file_5c438b938bf660_86124239.jpg", model: "2021", description: "The vehicle will be delivered and collected at no addtional cost. You can specify the exact location - hotel, address or the airport in the next step.")
+p "Created #{Car.count} Cars"
+
 # user1 = User.create(username: "Testo")
 # user2 = User.create(username: "Tetsina")
 # favorite1 = Favorite.create(user: user1, car: car1)
