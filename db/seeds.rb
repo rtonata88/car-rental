@@ -12,7 +12,7 @@ car3 = Car.create(name: "Carrera", make: "Porsche", image: "https://d2cnxbg536lf
 car4 = Car.create(name: "A8", make: "Audi", image: "https://d2cnxbg536lf2p.cloudfront.net/test/audi-a8_2016_lurento_5ddbe3a3683ad9_84355158.jpg", model: "2022", description: "The vehicle will be delivered and collected at no addtional cost. You can specify the exact location - hotel, address or the airport in the next step.")
 car5 = Car.create(name: "Maseratti", make: "Levante", image: "https://d2cnxbg536lf2p.cloudfront.net/test/maserati-levante-s-3-0-v6_2019_lurento_5dc96f6de95926_15148197.jpeg", model: "2019", description: "The vehicle will be delivered and collected at no addtional cost. You can specify the exact location - hotel, address or the airport in the next step.")
 car6 = Car.create(name: "Series 740", make: "BMW", image: "https://d2cnxbg536lf2p.cloudfront.net/test/file_5c438b938bf660_86124239.jpg", model: "2021", description: "The vehicle will be delivered and collected at no addtional cost. You can specify the exact location - hotel, address or the airport in the next step.")
-# p "Created #{Car.count} Cars"
+p "Created #{Car.count} Cars"
 
 # user1 = User.create(username: "Testo")
 # user2 = User.create(username: "Tetsina")
