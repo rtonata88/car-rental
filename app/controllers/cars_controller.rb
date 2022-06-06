@@ -12,14 +12,6 @@ class CarsController < ApplicationController
     render json: @car
   end
 
-  # GET /cars/new
-  def new
-  end
-
-  # GET /cars/1/edit
-  def edit
-  end
-
   # POST /cars or /cars.json
   def create
     @car = Car.create(
@@ -45,9 +37,6 @@ class CarsController < ApplicationController
     render json: @car
   end
 
-  def update_car
-  end
-
   # DELETE /cars/1 or /cars/1.json
   def destroy
     @cars = Car.all
@@ -58,11 +47,4 @@ class CarsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_car
-  end
-
-  # Only allow a list of trusted parameters through.
-  def car_params
-  end
 end
