@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# rubocop:disable Layout/LineLength
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -13,10 +16,3 @@ car4 = Car.create(name: "A8", make: "Audi", image: "https://d2cnxbg536lf2p.cloud
 car5 = Car.create(name: "Maseratti", make: "Levante", image: "https://d2cnxbg536lf2p.cloudfront.net/test/maserati-levante-s-3-0-v6_2019_lurento_5dc96f6de95926_15148197.jpeg", model: "2019", description: "The vehicle will be delivered and collected at no addtional cost. You can specify the exact location - hotel, address or the airport in the next step.")
 car6 = Car.create(name: "Series 740", make: "BMW", image: "https://d2cnxbg536lf2p.cloudfront.net/test/file_5c438b938bf660_86124239.jpg", model: "2021", description: "The vehicle will be delivered and collected at no addtional cost. You can specify the exact location - hotel, address or the airport in the next step.")
 p "Created #{Car.count} Cars"
-
-# user1 = User.create(username: "Testo")
-# user2 = User.create(username: "Tetsina")
-# favorite1 = Favorite.create(user: user1, car: car1)
-# favorite2 = Favorite.create(user: user1, car: car2)
-# favorite3 = Favorite.create(user: user2, car: car2)
-

@@ -1,29 +1,15 @@
 class FavoritesController < ApplicationController
   before_action :authorize_request
-  
+
   # GET  /users/:user_id/favorites
   def index
     @user = User.find(params[:user_id])
-    @favorites = Favorite.includes(:user).where(user_id: @user.id) 
+    @favorites = Favorite.includes(:user).where(user_id: @user.id)
     render json: @favorites
   end
 
-  # GET /favorites/1.json
-  # def show
-  #   @favorite = Favorite.find(params[:id])
-  #   render json: @favorite
-  # end
-
-  # GET /favorites/new
-  # def new
-  # end
-
-  # GET /favorites/1/edit
-  # def edit
-  # end
-
   # POST /users/:user_id/favorites or /favorites.json
-  #{ body: :car_id }
+  # { body: :car_id }
   def create
     @favorite = Favorite.create(
       user_id: params[:user_id],
@@ -32,19 +18,6 @@ class FavoritesController < ApplicationController
     render json: @favorite
   end
 
-  # PATCH/PUT /favorites/1 or /favorites/1.json
-  # def update
-  #   @favorite = Favorite.find(params[:id])
-  #   @favorite.update(
-  #     user_id: params[:user_id],
-  #     car_id: params[:car_id]
-  #   )
-  #   render json: @favorite
-  # end
-
-  # def update_favorite
-  # end
-
   # DELETE /users/:user_id/favorites/1 or /favorites/1.json
   def destroy
     @favorites = Favorite.all
@@ -52,14 +25,4 @@ class FavoritesController < ApplicationController
     @favorite.destroy
     render json: @favorites
   end
-
-  private
-
-  # Use callbacks to share common setup or constraints between actions.
-  # def set_favorite
-  # end
-
-  # Only allow a list of trusted parameters through.
-  # def favorite_params
-  # end
 end
