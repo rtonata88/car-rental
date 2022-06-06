@@ -40,7 +40,7 @@ Note: In case this doesn't work, try `rails db:drop` and do the steps all over a
 [Demo](https://car-rental-0.herokuapp.com/)
 
 ### React JS Frontend Repo
-[Demo](https://github.com/oliverSCZ/car-rental-frontend/)
+[Repo](https://github.com/oliverSCZ/car-rental-frontend/)
 
 
 ## Authors
