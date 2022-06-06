@@ -1,8 +1,7 @@
 class CarsController < ApplicationController
-
   # GET /cars
   def index
-    @cars = Car.all 
+    @cars = Car.all
     render json: @cars
   end
 
@@ -47,4 +46,6 @@ class CarsController < ApplicationController
 
   private
 
+  # Only allow a list of trusted parameters through.
+  def car_params; end
 end
