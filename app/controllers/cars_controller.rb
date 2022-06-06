@@ -1,8 +1,9 @@
-class CarsController < ApplicationController
+# frozen_string_literal: true
 
+class CarsController < ApplicationController
   # GET /cars
   def index
-    @cars = Car.all 
+    @cars = Car.all
     render json: @cars
   end
 
@@ -13,12 +14,10 @@ class CarsController < ApplicationController
   end
 
   # GET /cars/new
-  def new
-  end
+  def new; end
 
   # GET /cars/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /cars or /cars.json
   def create
@@ -45,8 +44,7 @@ class CarsController < ApplicationController
     render json: @car
   end
 
-  def update_car
-  end
+  def update_car; end
 
   # DELETE /cars/1 or /cars/1.json
   def destroy
@@ -59,10 +57,8 @@ class CarsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_car
-  end
+  def set_car; end
 
   # Only allow a list of trusted parameters through.
-  def car_params
-  end
+  def car_params; end
 end
