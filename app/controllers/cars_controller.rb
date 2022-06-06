@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CarsController < ApplicationController
   # GET /cars
   def index

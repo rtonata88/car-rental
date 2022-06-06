@@ -1,9 +1,5 @@
-# frozen_string_literal: true
-
-# rubocop:disable Style/Documentation
-
 class ApplicationController < ActionController::API
-  SECRET = '_car_rental'
+  SECRET = '_car_rental'.freeze
 
   def not_found
     render json: { error: 'not_found' }
@@ -17,7 +13,7 @@ class ApplicationController < ActionController::API
       current_user_id = token[0]['user_id']
       @current_user = User.find(current_user_id)
       @requested_user = User.find(params[:user_id])
-      if @current_user === @requested_user
+      if @current_user == @requested_user
         true
       else
         render json: { error: 'invalid credentials' }
