@@ -30,7 +30,6 @@ RSpec.describe 'favorites' do
     end
   end
 
-
   path '/users/{user_id}/favorites' do
     get 'Display a list of favorites of given user' do
       tags 'Favorites'
@@ -40,14 +39,14 @@ RSpec.describe 'favorites' do
       parameter name: :user_id, in: :path, type: :string
       response '200', 'Favorites found' do
         response(200, 'List of cars') do
-        run_test!
-      end
+          run_test!
+        end
 
-       response(404, 'Whoops!! Something went wrong') do
-        run_test!
+        response(404, 'Whoops!! Something went wrong') do
+          run_test!
+        end
       end
     end
-  end
   end
 
   path '/users/{user_id}/favorites/{id}' do
@@ -60,15 +59,13 @@ RSpec.describe 'favorites' do
       parameter name: :id, in: :path, type: :string
       response '200', 'Destroy favorite' do
         response(200, 'Favorite destroyed') do
-        run_test!
-      end
+          run_test!
+        end
 
-       response(404, 'Whoops!! Something went wrong') do
-        run_test!
+        response(404, 'Whoops!! Something went wrong') do
+          run_test!
+        end
       end
     end
   end
-  end
 end
-
-
