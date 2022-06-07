@@ -62,14 +62,19 @@ paths:
           description: car not found
         '406':
           description: unsupported accept header
-  "/users/1/favorites":
+  "/users/{user_id}/favorites":
     post:
       summary: Creates a favorite
       tags:
       - Favorites
       security:
       - ApiKeyAuth: []
-      parameters: []
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '201':
           description: favorite created

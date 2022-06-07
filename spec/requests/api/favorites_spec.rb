@@ -1,13 +1,13 @@
 require 'swagger_helper'
 
 RSpec.describe 'favorites' do
-  path '/users/1/favorites' do
+  path '/users/{user_id}/favorites' do
     post 'Creates a favorite' do
       tags 'Favorites'
       consumes 'application/json', 'application/xml'
       produces 'application/json'
       security [ApiKeyAuth: []]
-
+      parameter name: :user_id, in: :path, type: :string
       parameter name: :favorite, in: :body, type: :string, schema: {
         type: :object,
         properties: {
@@ -30,3 +30,5 @@ RSpec.describe 'favorites' do
     end
   end
 end
+
+
