@@ -16,10 +16,10 @@ class FavoritesController < ApplicationController
       car_id: params[:car_id]
     )
     if @favorite.valid?
-      render json: {car_id: car_id}, status: :created
+      render json: { car_id: }, status: :created
     else
-      render json: {errors: @favorite.errors.full_messages}, 
-      status: :not_acceptable
+      render json: { errors: @favorite.errors.full_messages },
+             status: :not_acceptable
     end
   end
 
@@ -29,10 +29,10 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
     if favorite.destroyed?
-      render json: {car_id: car_id}, status: :destroyed
+      render json: { car_id: }, status: :destroyed
     else
-      render json: {errors: @favorite.errors.full_messages}, 
-      status: :not_acceptable
+      render json: { errors: @favorite.errors.full_messages },
+             status: :not_acceptable
     end
   end
 end

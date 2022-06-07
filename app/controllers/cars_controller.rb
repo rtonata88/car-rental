@@ -14,11 +14,11 @@ class CarsController < ApplicationController
   # POST /cars or /cars.json
   def create
     @car = Car.create(car_params)
-      if car.valid?
-      render json: {name: name}, status: :created
+    if car.valid?
+      render json: { name: }, status: :created
     else
-      render json: {errors: car.errors.full_messages}, 
-      status: :not_acceptable
+      render json: { errors: car.errors.full_messages },
+             status: :not_acceptable
     end
   end
 
@@ -27,10 +27,10 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
     @car.update(car_params)
     if @car.update(car_params)
-        format.json { render :show, status: :ok }
-      else
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
+      format.json { render :show, status: :ok }
+    else
+      format.json { render json: @car.errors, status: :unprocessable_entity }
+    end
   end
 
   # DELETE /cars/1 or /cars/1.json
@@ -39,17 +39,17 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
     @car.destroy
     if car.destroyed?
-      render json: {name: name}, status: :destroyed
+      render json: { name: }, status: :destroyed
     else
-      render json: {errors: @car.errors.full_messages}, 
-      status: :not_acceptable
+      render json: { errors: @car.errors.full_messages },
+             status: :not_acceptable
     end
   end
 
   private
 
   # Only allow a list of trusted parameters through.
-  def car_params  
+  def car_params
     params.permit(:name, :make, :image, :model, :description)
   end
 end
