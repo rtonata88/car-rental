@@ -15,7 +15,12 @@ class FavoritesController < ApplicationController
       user_id: params[:user_id],
       car_id: params[:car_id]
     )
-    render json: @favorite
+    if @favorite.valid?
+      render json: {car_id: car_id}, status: :created
+    else
+      render json: {errors: @favorite.errors.full_messages}, 
+      status: :not_acceptable
+    end
   end
 
   # DELETE /users/:user_id/favorites/1 or /favorites/1.json
@@ -23,6 +28,11 @@ class FavoritesController < ApplicationController
     @favorites = Favorite.all
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
-    render json: @favorites
+    if favorite.destroyed?
+      render json: {car_id: car_id}, status: :destroyed
+    else
+      render json: {errors: @favorite.errors.full_messages}, 
+      status: :not_acceptable
+    end
   end
 end
