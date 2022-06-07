@@ -14,10 +14,10 @@ class CarsController < ApplicationController
   # POST /cars or /cars.json
   def create
     @car = Car.create(car_params)
-    if car.valid?
-      render json: { name: }, status: :created
+    if @car.valid?
+      render json: @car, status: :created
     else
-      render json: { errors: car.errors.full_messages },
+      render json: { errors: @car.errors.full_messages },
              status: :not_acceptable
     end
   end
@@ -38,8 +38,8 @@ class CarsController < ApplicationController
     @cars = Car.all
     @car = Car.find(params[:id])
     @car.destroy
-    if car.destroyed?
-      render json: { name: }, status: :destroyed
+    if @car.destroyed?
+      render json: { message: 'Car was destroyed' }, status: :ok
     else
       render json: { errors: @car.errors.full_messages },
              status: :not_acceptable
