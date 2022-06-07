@@ -98,6 +98,23 @@ paths:
                   type: integer
               required:
               - car_id
+    get:
+      summary: Retrieves all favorites
+      tags:
+      - Favorites
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Favorites found
+        '404':
+          description: Whoops!! Something went wrong
   "/users":
     post:
       summary: Creates a user

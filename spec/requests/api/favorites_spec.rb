@@ -29,6 +29,26 @@ RSpec.describe 'favorites' do
       end
     end
   end
+
+
+  path '/users/{user_id}/favorites' do
+    get 'Retrieves all favorites' do
+      tags 'Favorites'
+      consumes 'application/json', 'application/xml'
+      produces 'application/json'
+      security [ApiKeyAuth: []]
+      parameter name: :user_id, in: :path, type: :string
+      response '200', 'Favorites found' do
+        response(200, 'List of cars') do
+        run_test!
+      end
+
+       response(404, 'Whoops!! Something went wrong') do
+        run_test!
+      end
+    end
+  end
+  end
 end
 
 
