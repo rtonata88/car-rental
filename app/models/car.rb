@@ -5,6 +5,5 @@ class Car < ApplicationRecord
   validates :make, length: { in: 2..15 }, presence: true
   validates :image, presence: true
   validates :model, length: { in: 2..15 }, numericality: { only_integer: true }, presence: true
-  validates :description, length: { in: 10..180 },presence: true
-
+  validates :description, length: { in: 10..180 }, presence: true
 end
