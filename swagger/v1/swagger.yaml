@@ -12,7 +12,7 @@ info:
 paths:
   "/cars":
     get:
-      summary: Display a list of cars
+      summary: Displays a list of cars
       tags:
       - Cars
       responses:
@@ -99,7 +99,7 @@ paths:
               required:
               - car_id
     get:
-      summary: Display a list of favorites of given user
+      summary: Displays a list of favorites of given user
       tags:
       - Favorites
       security:
