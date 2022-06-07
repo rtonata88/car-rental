@@ -31,7 +31,7 @@ RSpec.describe 'favorites' do
   end
 
   path '/users/{user_id}/favorites' do
-    get 'Display a list of favorites of given user' do
+    get 'Displays a list of favorites of given user' do
       tags 'Favorites'
       consumes 'application/json', 'application/xml'
       produces 'application/json'

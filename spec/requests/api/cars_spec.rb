@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 RSpec.describe 'cars' do
   path '/cars' do
-    get('Display a list of cars') do
+    get('Displays a list of cars') do
       tags 'Cars'
       produces 'application/json'
       response(200, 'List of cars') do
