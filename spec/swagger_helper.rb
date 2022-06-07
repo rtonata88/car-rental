@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -14,18 +15,29 @@ RSpec.configure do |config|
   # the root example_group in your specs, e.g. describe '...', swagger_doc: 'v2/swagger.json'
   config.swagger_docs = {
     'v1/swagger.yaml' => {
+
+      components: {
+        securitySchemes: {
+          ApiKeyAuth: {
+            type: :apiKey,
+            name: 'Authorization',
+            in: :header
+          }
+        }
+      },
+
       openapi: '3.0.1',
       info: {
-        title: 'API V1',
+        title: 'Rent-a-Car API V1',
         version: 'v1'
       },
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'http://127.0.0.1:3001',
           variables: {
             defaultHost: {
-              default: 'www.example.com'
+              default: 'http://127.0.0.1:3001'
             }
           }
         }
@@ -39,3 +51,4 @@ RSpec.configure do |config|
   # Defaults to json. Accepts ':json' and ':yaml'.
   config.swagger_format = :yaml
 end
+# rubocop:enable Metrics/BlockLength

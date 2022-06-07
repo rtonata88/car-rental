@@ -5,7 +5,12 @@ class FavoritesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @favorites = Favorite.includes(:user).where(user_id: @user.id)
-    render json: @favorites
+
+    if @favorites
+      render json: @favorites
+    else
+      render json: { error: @favorites.errors, status: :unprocessable_entity }
+    end
   end
 
   # POST /users/:user_id/favorites or /favorites.json
