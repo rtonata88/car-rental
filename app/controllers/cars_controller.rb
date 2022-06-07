@@ -26,7 +26,13 @@ class CarsController < ApplicationController
       model: params[:model],
       description: params[:description]
     )
-    render json: @car
+    respond_to do |format|
+      if @favorite.save
+        format.json { render json: @car, status: :created, message: 'Car was successfully created.' }
+      else
+        format.json { render json: @car.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /cars/1 or /cars/1.json
@@ -49,7 +55,10 @@ class CarsController < ApplicationController
     @cars = Car.all
     @car = Car.find(params[:id])
     @car.destroy
-    render json: @cars
+
+    respond_to do |format|
+      format.json { render message: "Car destroyed!"}
+    end
   end
 
   private
