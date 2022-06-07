@@ -12,6 +12,43 @@ paths:
       responses:
         '200':
           description: List of cars found
+        '404':
+          description: Whoops!! Something went wrong
+  "/cars/{id}":
+    get:
+      summary: Display a list of cars
+      tags:
+      - Cars
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of cars found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  make:
+                    type: string
+                  image:
+                    type: string
+                  model:
+                    type: string
+                  description:
+                    type: string
+                required:
+                - name
+                - description
+                - make
+                - image
+                - model
 servers:
 - url: https://stormy-lake-55546.herokuapp.com
   variables:
