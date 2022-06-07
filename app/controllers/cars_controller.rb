@@ -13,26 +13,14 @@ class CarsController < ApplicationController
 
   # POST /cars or /cars.json
   def create
-    @car = Car.create(
-      name: params[:name],
-      make: params[:make],
-      image: params[:image],
-      model: params[:model],
-      description: params[:description]
-    )
+    @car = Car.create(car_params)
     render json: @car
   end
 
   # PATCH/PUT /cars/1 or /cars/1.json
   def update
     @car = Car.find(params[:id])
-    @car.update(
-      name: params[:name],
-      make: params[:make],
-      image: params[:image],
-      model: params[:model],
-      description: params[:description]
-    )
+    @car.update(car_params)
     render json: @car
   end
 
@@ -47,5 +35,7 @@ class CarsController < ApplicationController
   private
 
   # Only allow a list of trusted parameters through.
-  def car_params; end
+  def car_params  
+    params.permit(:name, :make, :image, :model, :description)
+  end
 end
