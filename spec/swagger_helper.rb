@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# rubocop:disable Metrics/BlockLength
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -16,7 +15,7 @@ RSpec.configure do |config|
   # the root example_group in your specs, e.g. describe '...', swagger_doc: 'v2/swagger.json'
   config.swagger_docs = {
     'v1/swagger.yaml' => {
-      
+
       components: {
         securitySchemes: {
           ApiKeyAuth: {
@@ -52,3 +51,4 @@ RSpec.configure do |config|
   # Defaults to json. Accepts ':json' and ':yaml'.
   config.swagger_format = :yaml
 end
+# rubocop:enable Metrics/BlockLength

@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'favorites' do
-    path '/users/1/favorites' do
+  path '/users/1/favorites' do
     post 'Creates a favorite' do
       tags 'Favorites'
       consumes 'application/json', 'application/xml'
@@ -18,7 +18,7 @@ RSpec.describe 'favorites' do
 
       response '201', 'favorite created' do
         let(:favorite) do
-          { id:1, car_id: 1, user_id: 1}
+          { id: 1, car_id: 1, user_id: 1 }
         end
         run_test!
       end

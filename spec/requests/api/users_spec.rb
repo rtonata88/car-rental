@@ -1,8 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'users' do
-    path '/users' do
-
+  path '/users' do
     post 'Creates a user' do
       tags 'Users'
       consumes 'application/json'
@@ -12,7 +11,7 @@ RSpec.describe 'users' do
           username: { type: :string },
           password: { type: :string }
         },
-        required: [ 'username', 'password' ]
+        required: %w[username password]
       }
 
       response '201', 'User created' do
