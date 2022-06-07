@@ -7,9 +7,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[create destroy] do
     resources :favorites, only: %i[index create destroy]
   end
-  post '/login', to: 'auth#login'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  post "/login", to: "auth#login"
 end

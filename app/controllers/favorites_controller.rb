@@ -16,15 +16,13 @@ class FavoritesController < ApplicationController
   # POST /users/:user_id/favorites or /favorites.json
   # { body: :car_id }
   def create
-    @favorite = Favorite.create(
-      user_id: params[:user_id],
-      car_id: params[:car_id]
-    )
-      if @favorite.save
-        render json: @favorite, status: :created, message: 'Favorite was successfully created.'
-      else
-        render json: { error: @favorite.errors, status: :unprocessable_entity }
-      end 
+    @favorite = Favorite.create(favorite_params)
+    if @favorite.valid?
+      render json: @favorite, status: :created
+    else
+      render json: { errors: @favorite.errors.full_messages },
+             status: :not_acceptable
+    end
   end
 
   # DELETE /users/:user_id/favorites/1 or /favorites/1.json
@@ -32,11 +30,15 @@ class FavoritesController < ApplicationController
     @favorites = Favorite.all
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
-    
-    unless @favorite.in?(@favorites)
-      render json: { status: :success, message: "Favorite destroyed!" }
+    if @favorite.destroyed?
+      render json: { message: 'Favorite was destroyed' }, status: :ok
     else
-      render json: { status: :failure, error: "Could not find favorite to destroy" }
+      render json: { errors: @favorite.errors.full_messages },
+             status: :not_acceptable
     end
+  end
+
+  def favorite_params
+    params.permit(:user_id, :car_id)
   end
 end

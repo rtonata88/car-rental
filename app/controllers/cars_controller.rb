@@ -11,61 +11,45 @@ class CarsController < ApplicationController
     render json: @car
   end
 
-  # GET /cars/new
-  def new; end
-
-  # GET /cars/1/edit
-  def edit; end
-
   # POST /cars or /cars.json
   def create
-    @car = Car.create(
-      name: params[:name],
-      make: params[:make],
-      image: params[:image],
-      model: params[:model],
-      description: params[:description]
-    )
-    respond_to do |format|
-      if @favorite.save
-        format.json { render json: @car, status: :created, message: 'Car was successfully created.' }
-      else
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
+    @car = Car.create(car_params)
+    if @car.valid?
+      render json: @car, status: :created
+    else
+      render json: { errors: @car.errors.full_messages },
+             status: :not_acceptable
     end
   end
 
   # PATCH/PUT /cars/1 or /cars/1.json
   def update
     @car = Car.find(params[:id])
-    @car.update(
-      name: params[:name],
-      make: params[:make],
-      image: params[:image],
-      model: params[:model],
-      description: params[:description]
-    )
-    render json: @car
+    @car.update(car_params)
+    if @car.update(car_params)
+      format.json { render :show, status: :ok }
+    else
+      format.json { render json: @car.errors, status: :unprocessable_entity }
+    end
   end
-
-  def update_car; end
 
   # DELETE /cars/1 or /cars/1.json
   def destroy
     @cars = Car.all
     @car = Car.find(params[:id])
     @car.destroy
-
-    respond_to do |format|
-      format.json { render message: "Car destroyed!"}
+    if @car.destroyed?
+      render json: { message: 'Car was destroyed' }, status: :ok
+    else
+      render json: { errors: @car.errors.full_messages },
+             status: :not_acceptable
     end
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_car; end
-
   # Only allow a list of trusted parameters through.
-  def car_params; end
+  def car_params
+    params.permit(:name, :make, :image, :model, :description)
+  end
 end
