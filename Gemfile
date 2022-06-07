@@ -14,6 +14,8 @@ gem 'puma', '~> 5.0'
 
 gem 'rswag'
 
+gem 'rswag-specs'
+
 gem 'rspec'
 
 gem 'rspec-rails'

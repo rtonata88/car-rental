@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -14,6 +16,17 @@ RSpec.configure do |config|
   # the root example_group in your specs, e.g. describe '...', swagger_doc: 'v2/swagger.json'
   config.swagger_docs = {
     'v1/swagger.yaml' => {
+      
+      components: {
+        securitySchemes: {
+          ApiKeyAuth: {
+            type: :apiKey,
+            name: 'Authorization',
+            in: :header
+          }
+        }
+      },
+
       openapi: '3.0.1',
       info: {
         title: 'Rent-a-Car API V1',
@@ -22,10 +35,10 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://stormy-lake-55546.herokuapp.com',
+          url: 'http://127.0.0.1:3001',
           variables: {
             defaultHost: {
-              default: 'https://stormy-lake-55546.herokuapp.com'
+              default: 'http://127.0.0.1:3001'
             }
           }
         }

@@ -1,4 +1,10 @@
 ---
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
 openapi: 3.0.1
 info:
   title: Rent-a-Car API V1
@@ -11,12 +17,12 @@ paths:
       - Cars
       responses:
         '200':
-          description: List of cars found
+          description: List of cars
         '404':
           description: Whoops!! Something went wrong
   "/cars/{id}":
     get:
-      summary: Display a list of cars
+      summary: Retrieves a car
       tags:
       - Cars
       parameters:
@@ -27,30 +33,92 @@ paths:
           type: string
       responses:
         '200':
-          description: List of cars found
+          description: Car found
           content:
             application/json:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: integer
                   name:
+                    type: string
+                  model:
                     type: string
                   make:
                     type: string
                   image:
                     type: string
-                  model:
-                    type: string
                   description:
                     type: string
                 required:
+                - id
                 - name
-                - description
+                - model
                 - make
                 - image
-                - model
+                - description
+        '404':
+          description: car not found
+        '406':
+          description: unsupported accept header
+  "/users/1/favorites":
+    post:
+      summary: Creates a favorite
+      tags:
+      - Favorites
+      security:
+      - ApiKeyAuth: []
+      parameters: []
+      responses:
+        '201':
+          description: favorite created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                car_id:
+                  type: integer
+              required:
+              - car_id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                car_id:
+                  type: integer
+              required:
+              - car_id
+  "/users":
+    post:
+      summary: Creates a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: User created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+              - username
+              - password
 servers:
-- url: https://stormy-lake-55546.herokuapp.com
+- url: http://127.0.0.1:3001
   variables:
     defaultHost:
-      default: https://stormy-lake-55546.herokuapp.com
+      default: http://127.0.0.1:3001
