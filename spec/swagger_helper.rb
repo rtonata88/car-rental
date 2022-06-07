@@ -16,16 +16,16 @@ RSpec.configure do |config|
     'v1/swagger.yaml' => {
       openapi: '3.0.1',
       info: {
-        title: 'API V1',
+        title: 'Rent-a-Car API V1',
         version: 'v1'
       },
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'https://stormy-lake-55546.herokuapp.com',
           variables: {
             defaultHost: {
-              default: 'www.example.com'
+              default: 'https://stormy-lake-55546.herokuapp.com'
             }
           }
         }

@@ -1,0 +1,19 @@
+---
+openapi: 3.0.1
+info:
+  title: Rent-a-Car API V1
+  version: v1
+paths:
+  "/cars":
+    get:
+      summary: Display a list of cars
+      tags:
+      - Cars
+      responses:
+        '200':
+          description: List of cars found
+servers:
+- url: https://stormy-lake-55546.herokuapp.com
+  variables:
+    defaultHost:
+      default: https://stormy-lake-55546.herokuapp.com
