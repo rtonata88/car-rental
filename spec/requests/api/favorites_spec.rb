@@ -32,7 +32,7 @@ RSpec.describe 'favorites' do
 
 
   path '/users/{user_id}/favorites' do
-    get 'Retrieves all favorites' do
+    get 'Display a list of favorites of given user' do
       tags 'Favorites'
       consumes 'application/json', 'application/xml'
       produces 'application/json'
@@ -40,6 +40,26 @@ RSpec.describe 'favorites' do
       parameter name: :user_id, in: :path, type: :string
       response '200', 'Favorites found' do
         response(200, 'List of cars') do
+        run_test!
+      end
+
+       response(404, 'Whoops!! Something went wrong') do
+        run_test!
+      end
+    end
+  end
+  end
+
+  path '/users/{user_id}/favorites/{id}' do
+    delete 'Deletes a favorite' do
+      tags 'Favorites'
+      consumes 'application/json'
+      produces 'application/json'
+      security [ApiKeyAuth: []]
+      parameter name: :user_id, in: :path, type: :string
+      parameter name: :id, in: :path, type: :string
+      response '200', 'Destroy favorite' do
+        response(200, 'Favorite destroyed') do
         run_test!
       end
 

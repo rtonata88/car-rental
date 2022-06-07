@@ -99,7 +99,7 @@ paths:
               required:
               - car_id
     get:
-      summary: Retrieves all favorites
+      summary: Display a list of favorites of given user
       tags:
       - Favorites
       security:
@@ -113,6 +113,29 @@ paths:
       responses:
         '200':
           description: Favorites found
+        '404':
+          description: Whoops!! Something went wrong
+  "/users/{user_id}/favorites/{id}":
+    delete:
+      summary: Deletes a favorite
+      tags:
+      - Favorites
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Destroy favorite
         '404':
           description: Whoops!! Something went wrong
   "/users":
