@@ -4,6 +4,6 @@ class User < ApplicationRecord
 
   validates :username, length: { in: 5..15 }, presence: true
   validates :username, uniqueness:
-  { message: 'An account associated with this username already exists' }
+  { message: 'is already associated with an existing account' }
   validates :password, length: { in: 5..15 }
 end
