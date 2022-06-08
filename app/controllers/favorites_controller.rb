@@ -31,7 +31,7 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
     if @favorite.destroyed?
-      render json: { message: 'Favorite was destroyed' }, status: :ok
+      render json: { messages: ['Favorite was destroyed'] }, status: :ok
     else
       render json: { errors: @favorite.errors.full_messages },
              status: :not_acceptable
