@@ -6,7 +6,7 @@ class AuthController < ApplicationController
       token = JWT.encode({ user_id: @user.id }, SECRET, 'HS256')
       render json: { user: @user, token: token }
     else
-      render json: { error: 'username or password are invalid' }
+      render json: { errors: ['username or password are invalid'] }
     end
   end
 end
