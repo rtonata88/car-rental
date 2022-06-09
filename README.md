@@ -9,6 +9,12 @@ A simple API application developed in RoR that displays a list of cars and allow
 - PostgresSQL
 - Tailwind CSS
 
+## Kanban board
+
+- For do this project we organized using this [Kanban board](https://github.com/rtonata88/car-rental/projects/1)
+- Link of the [screenshot](https://user-images.githubusercontent.com/18032597/169875222-97c8fc5a-6eb6-4372-9f39-f422a490c058.png) of the initial state of our Kanban board.
+- This project was developed by three people.
+
 ## Getting Started
 
 To get a local copy up and running follow the steps below.
